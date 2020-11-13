@@ -1,0 +1,30 @@
+{
+    "matrix": {
+        "user_id": "matrix_user_name",
+        "user_password": "matrix_user_password",
+        "homeserver": "url_to_matrix_homeserver",
+        "device_id": "ABCDEFG",
+        "device_name": "IMAP notifier bot"
+    },
+    "storage": {
+        "store_path": "./store"
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s | %(name)s [%(levelname)s] %(message)s",
+        "file_logging": {
+            "enabled": false,
+            "filepath": "bot.log"
+        },
+        "console_logging": {
+            "enabled": true
+        }
+    },
+    "allowed_room_ids": [
+        "room_id_here"
+    ],
+    "mail_host": "mail.example.com",
+    "mail_imap_port": 465,
+    "mail_user": "user@mail.example.com",
+    "mail_pass": "password_for_mail_user"
+}
