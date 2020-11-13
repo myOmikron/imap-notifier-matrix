@@ -10,4 +10,3 @@ User=imap-notifier
 WorkingDirectory=/home/imap-notifier
 Restart=always
 KillSignal=SIGKILL
-StandardError=syslog
