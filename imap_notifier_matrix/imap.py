@@ -17,7 +17,7 @@ async def fetch_and_delete(client, config):
                 logger.info(f"Received a mail from {msg.from_values['full']}")
                 body = msg.text.strip().replace('\r\n', '\n')
                 formatted_msg = f"<p><strong>I received a mail!</strong></p>\n\n<p>From: {msg.from_values['full']}" \
-                                f"</br> Subject: {msg.subject}</br>Body:</p>\n\n<pre><code>\n{body}</p>\n</code></pre>"
+                                f"</br> Subject: {msg.subject}</br>Body:</p>\n\n<pre><code>{body}</p></code></pre>"
 
                 for room in config["allowed_room_ids"]:
                     try:
