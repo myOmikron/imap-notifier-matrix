@@ -35,4 +35,4 @@ async def fetch_and_delete(client, config):
                         
             mailbox.delete([msg.uid for msg in mailbox.fetch()])
 
-        await asyncio.sleep(10)
+        await asyncio.sleep(60)
