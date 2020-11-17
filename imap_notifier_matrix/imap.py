@@ -16,6 +16,8 @@ async def fetch_and_delete(client, config):
             for msg in mailbox.fetch():
                 logger.info(f"Received a mail from {msg.from_values['full']}")
                 body = msg.text.strip().replace('\r\n', '\n')
+                body_msg = f"I received a mail\nFrom: {msg.from_values['full']}\nSubject: {msg.subject}\nBody:\n\n" \
+                           f"{body}"
                 formatted_msg = f"<p><strong>I received a mail!</strong></p>\n\n<p>From: {msg.from_values['full']}" \
                                 f"</br> Subject: {msg.subject}</br>Body:</p>\n\n<pre><code>{body}</code></pre>"
 
@@ -24,7 +26,7 @@ async def fetch_and_delete(client, config):
                         content = {
                             "msgtype": "m.text",
                             "format": "org.matrix.custom.html",
-                            "body": formatted_msg,
+                            "body": body_msg,
                             "formatted_body": formatted_msg
                         }
                         await client.room_send(
@@ -32,7 +34,7 @@ async def fetch_and_delete(client, config):
                         )
                     except SendRetryError:
                         logger.exception(f"Unable to send message to {room}")
-                        
+
             mailbox.delete([msg.uid for msg in mailbox.fetch()])
 
         await asyncio.sleep(60)
